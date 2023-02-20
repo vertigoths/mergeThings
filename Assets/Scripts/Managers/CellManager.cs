@@ -8,7 +8,7 @@ namespace Managers
     public class CellManager : MonoBehaviour
     {
         private MergeManager _mergeManager;
-        [SerializeField] private Cell[] cells;
+        [SerializeField] private Cell.Cell[] cells;
 
         private void Awake()
         {
@@ -30,6 +30,9 @@ namespace Managers
             {
                 if (closestCell.GetItemRank() == item.Rank)
                 {
+                    item.gameObject.SetActive(false);
+                    closestCell.RemoveItem();
+
                     _mergeManager.MergeItems(closestCell.transform.position, item.Rank);
                 }
                 else
@@ -49,7 +52,7 @@ namespace Managers
             cell.OnPick();
         }
 
-        private Cell GetClosestCell(Vector3 position)
+        private Cell.Cell GetClosestCell(Vector3 position)
         {
             var minDifference = Mathf.Infinity;
             var closestCell = cells[0];
@@ -68,7 +71,7 @@ namespace Managers
             return closestCell;
         }
 
-        private Cell GetCellFromPosition(Vector3 position)
+        private Cell.Cell GetCellFromPosition(Vector3 position)
         {
             return cells.FirstOrDefault(cell => cell.transform.position.Equals(position));
         }

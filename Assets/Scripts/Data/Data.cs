@@ -47,6 +47,14 @@ public static class Data
         },
     };
 
+    private static readonly GameObject[] Effects = new[]
+    {
+        Resources.Load<GameObject>("Pickup Items/Diamond"),
+        Resources.Load<GameObject>("Pickup Items/Heart"),
+        Resources.Load<GameObject>("Pickup Items/Smiley"),
+        Resources.Load<GameObject>("Pickup Items/Star"),
+    };
+
     public static Material GetMaterialByCell(CellType cellType)
     {
         return CellMaterials[cellType];
@@ -55,5 +63,11 @@ public static class Data
     public static GameObject GetFoodById(int id)
     {
         return Items[id];
+    }
+
+    public static GameObject GetRandomEffectPrefab()
+    {
+        var rand = Random.Range(0, Effects.Length);
+        return Effects[rand];
     }
 }

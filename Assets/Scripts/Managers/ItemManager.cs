@@ -17,6 +17,8 @@ namespace Managers
         {
             SpawnItem(1, Vector3.zero);
             SpawnItem(1, Vector3.left * 5);
+            SpawnItem(1, Vector3.forward * 5);
+            SpawnItem(1, Vector3.forward * 10);
             SpawnItem(3, Vector3.right * 5);
         }
 
