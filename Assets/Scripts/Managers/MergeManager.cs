@@ -6,10 +6,12 @@ namespace Managers
 {
     public class MergeManager : MonoBehaviour
     {
+        private ItemManager _itemManager;
         private LinkedList<GameObject> _effects;
 
         private void Awake()
         {
+            _itemManager = FindObjectOfType<ItemManager>();
             _effects = new LinkedList<GameObject>();
         }
 
@@ -20,11 +22,11 @@ namespace Managers
 
         public void MergeItems(Vector3 mergePosition, int id)
         {
-            var effect = _effects.Last.Value;
-            _effects.RemoveLast();
-            
-            effect.SetActive(true);
-            effect.transform.position = mergePosition + Vector3.up;
+            if (id != 9)
+            {
+                _itemManager.SpawnItem(id + 1, mergePosition);
+                DisplayEffect(mergePosition);
+            }
 
             if (_effects.Count == 0)
             {
@@ -42,6 +44,15 @@ namespace Managers
                 effectObject.SetActive(false);
                 _effects.AddLast(effectObject);
             }
+        }
+
+        private void DisplayEffect(Vector3 mergePosition)
+        {
+            var effect = _effects.Last.Value;
+            _effects.RemoveLast();
+            
+            effect.SetActive(true);
+            effect.transform.position = mergePosition + Vector3.up;
         }
     }
 }

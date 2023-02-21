@@ -6,23 +6,26 @@ namespace Managers
     {
         private Camera _camera;
         private CellManager _cellManager;
+        private int _currentLevel;
     
         private void Awake()
         {
             _camera = Camera.main;
             _cellManager = FindObjectOfType<CellManager>();
+            _currentLevel = PlayerPrefs.GetInt("CurrentLevel");
         }
 
         private void Start()
         {
-            SpawnItem(1, Vector3.zero);
-            SpawnItem(1, Vector3.left * 5);
-            SpawnItem(1, Vector3.forward * 5);
-            SpawnItem(1, Vector3.forward * 10);
-            SpawnItem(3, Vector3.right * 5);
+            var items = LevelData.StartingItemList[_currentLevel];
+
+            foreach (var item in items)
+            {
+                SpawnItem(item.GetId(), item.GetSpawnPosition());
+            }
         }
 
-        private void SpawnItem(int id, Vector3 spawnPosition)
+        public void SpawnItem(int id, Vector3 spawnPosition)
         {
             var itemPrefab = Data.GetFoodById(id);
 

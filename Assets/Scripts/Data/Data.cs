@@ -46,6 +46,47 @@ public static class Data
             9, Resources.Load<GameObject>("Prefabs/Foods/watermelon")
         },
     };
+    
+    private static readonly Dictionary<int, GameObject> AnimalItems = new Dictionary<int, GameObject>()
+    {
+        {
+            1, Resources.Load<GameObject>("Prefabs/FoodsForAnimals/apple")
+        },
+        {
+            2, Resources.Load<GameObject>("Prefabs/FoodsForAnimals/banana")
+        },
+        {
+            3, Resources.Load<GameObject>("Prefabs/FoodsForAnimals/cherry")
+        },
+        {
+            4, Resources.Load<GameObject>("Prefabs/FoodsForAnimals/garlic")
+        },
+        {
+            5, Resources.Load<GameObject>("Prefabs/FoodsForAnimals/grape")
+        },
+        {
+            6, Resources.Load<GameObject>("Prefabs/FoodsForAnimals/lemon")
+        },
+        {
+            7, Resources.Load<GameObject>("Prefabs/FoodsForAnimals/mushroom")
+        },
+        {
+            8, Resources.Load<GameObject>("Prefabs/FoodsForAnimals/pumpkin")
+        },
+        {
+            9, Resources.Load<GameObject>("Prefabs/FoodsForAnimals/watermelon")
+        },
+    };
+    
+    private static readonly GameObject[] Animals = new GameObject[]
+    {
+        Resources.Load<GameObject>("Prefabs/Animals/Cow"),
+        Resources.Load<GameObject>("Prefabs/Animals/Horse"),
+        Resources.Load<GameObject>("Prefabs/Animals/Llama"),
+        Resources.Load<GameObject>("Prefabs/Animals/Pig"),
+        Resources.Load<GameObject>("Prefabs/Animals/Pug"),
+        Resources.Load<GameObject>("Prefabs/Animals/Sheep")
+    };
 
     private static readonly GameObject[] Effects = new[]
     {
@@ -63,6 +104,16 @@ public static class Data
     public static GameObject GetFoodById(int id)
     {
         return Items[id];
+    }
+
+    public static GameObject GetAnimalFoodById(int id)
+    {
+        return AnimalItems[id];
+    }
+
+    public static GameObject GetAnimalById(int id)
+    {
+        return Animals[id];
     }
 
     public static GameObject GetRandomEffectPrefab()
