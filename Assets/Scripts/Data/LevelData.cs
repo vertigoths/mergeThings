@@ -24,9 +24,9 @@ public class LevelData
     {
         new List<Animal>()
         {
-            new Animal(4, 4, new Vector3(5f, 0f, 15.5f)),
-            new Animal(3, 5, new Vector3(2.5f, 0f, 13f)),
-            new Animal(2, 7, new Vector3(-2.5f, 0f, 10.5f)),
+            new Animal(4, 2, new Vector3(5f, 0f, 15.5f)),
+            new Animal(3, 1, new Vector3(2.5f, 0f, 13f)),
+            new Animal(2, 3, new Vector3(-2.5f, 0f, 10.5f)),
         },
         new List<Animal>()
         {
